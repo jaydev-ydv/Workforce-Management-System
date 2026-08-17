@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Authentication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="page-shell">
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+  <div class="orb orb-three"></div>
+
+  <section class="auth-hero">
+    <p class="eyebrow">Workforce System</p>
+    <h1>Plan smarter shifts with a brighter dashboard.</h1>
+    <p class="hero-copy">
+      Log in to manage teams, schedules, reports, and daily operations inside a more vibrant workspace.
+    </p>
+
+    <div class="theme-row" aria-hidden="true">
+      <span class="theme-pill sunset">Sunset Flow</span>
+      <span class="theme-pill lagoon">Lagoon Pulse</span>
+      <span class="theme-pill citrus">Citrus Spark</span>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="card-glow"></div>
+    <p class="form-kicker">Secure Access</p>
+    <h2 id="formTitle">Login</h2>
+    <p class="form-subtitle">Welcome back. Enter your credentials to continue.</p>
+
+    <input id="email" placeholder="Email" class="hidden">
+    <input id="username" placeholder="Username">
+    <input id="password" type="password" placeholder="Password">
+
+    <button id="submitBtn" onclick="handleAuth()">Login</button>
+
+    <p id="msg"></p>
+
+    <p class="toggle">
+      <span id="toggleText">New user?</span>
+      <a id="toggleLink" href="#" onclick="toggleForm()">Register here</a>
+    </p>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manager Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    if (!localStorage.getItem("token")) {
+      window.location.replace("index.html");
+    }
+  </script>
+
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">ShiftScheduler Pro</div>
+  <button onclick="logout()">Logout</button>
+</header>
+
+  <nav class="sidebar">
+  <ul>
+    <li onclick="showSection('dashboard')">Dashboard</li>
+    <li onclick="showSection('employees')">Employees</li>
+    <li onclick="window.location.href='schedule.html'">Shifts</li>
+    <li onclick="showSection('admin')">Admin</li>
+    <li onclick="showSection('reports')">Reports</li>
+  </ul>
+</nav>
+
+<main class="main">
+  <section id="dashboardSection">
+    <div class="hero-panel">
+      <p class="hero-kicker">Workforce Management Platform</p>
+      <h1 class="hero-title">ShiftScheduler Pro</h1>
+      <p class="hero-description">
+        A centralized workforce dashboard for managing employee records, assigning shifts,
+        tracking attendance, handling leave, and generating shift-based reports in one place.
+      </p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="card kpi-card" onclick="openEmployeeRecords()">Employee Records <span>Organized</span></div>
+      <div class="card kpi-card" onclick="openShiftPlanning()">Shift Planning <span>Streamlined</span></div>
+      <div class="card kpi-card" onclick="openAttendanceReports()">Attendance Reports <span>Ready</span></div>
+    </div>
+  </section>
+
+  <section id="employeesSection" class="hidden">
+    <h2>Employees</h2>
+
+    <div class="form-box">
+      <input id="emp_id" placeholder="Employee ID">
+      <input id="emp_name" placeholder="Full Name">
+      <input id="emp_age" placeholder="Age">
+      <input id="emp_exp" placeholder="Experience (years)">
+      <input id="emp_role" placeholder="Role">
+      <input id="emp_phone" placeholder="Phone">
+
+      <button onclick="addEmployee()">Add Employee</button>
+    </div>
+
+    <button onclick="showEmployeeDetails()">View Employee List</button>
+
+    <div id="employeeList" class="hidden"></div>
+  </section>
+
+  <section id="adminSection" class="hidden">
+    <h2>Admin</h2>
+
+    <div class="admin-grid">
+      <div class="card">
+        <h3>Reset User Password</h3>
+        <div class="form-box admin-form">
+          <input id="reset_user_id" placeholder="User ID">
+          <input id="reset_password" type="password" placeholder="New Password">
+          <button onclick="resetUserPassword()">Reset Password</button>
+        </div>
+        <p id="adminMsg"></p>
+      </div>
+
+      <div class="card">
+        <h3>Registered Users</h3>
+        <button onclick="loadUsers()">Refresh Users</button>
+        <div id="userList"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reportsSection" class="hidden">
+    <h2>Reports</h2>
+
+    <div class="admin-grid">
+      <div class="card">
+        <h3>Attendance Marker</h3>
+        <button onclick="loadAttendanceShifts()">Load Scheduled Shifts</button>
+        <div id="attendanceList"></div>
+      </div>
+
+      <div class="card">
+        <h3>Shift Reports</h3>
+        <button onclick="loadReports()">Load Reports</button>
+        <div id="reportList"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/api.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>
