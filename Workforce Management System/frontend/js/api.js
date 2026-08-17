@@ -3,7 +3,7 @@
 // your real backend URL, e.g. "https://your-backend-name.vercel.app/api"
 const API = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
   ? "http://localhost:5000/api"
-  : "https://REPLACE-WITH-YOUR-BACKEND-URL.vercel.app/api";
+  : "https://workforce-management-system-ipp8.vercel.app/api";
 
 function getToken() {
   return localStorage.getItem("token");
